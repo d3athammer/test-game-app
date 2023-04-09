@@ -25,7 +25,6 @@ const PlatformIconList = ({ platforms }: Props) => {
     nintendo: SiNintendo,
     ios: MdPhoneIphone,
     web: BsGlobe,
-    android: FaAndroid
   }
 
   return (
