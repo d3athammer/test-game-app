@@ -1,6 +1,4 @@
-import { CanceledError } from "axios";
-import { useEffect, useState } from "react";
-import apiClient from "../Services/api-client";
+import useData from "./useData";
 
 // This hook is to access all genres from the API
 
@@ -10,41 +8,7 @@ export interface Genre {
   name: string;
 }
 
-interface FetchGenresResponse {
-  count: number;
-  //In t he game API, Genre objects are in results array, therefore you set GenreArray to access them later
-  results: Genre[];
-}
-
-const useGenres = () => {
-  // tell typescript useState is setting to Game array
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(false);
-
-  //send fetch request to the backend
-  useEffect(() => {
-    const controller = new AbortController();
-
-    setLoading(true);
-
-    apiClient
-      .get<FetchGenresResponse>("/genres", { signal: controller.signal })
-      .then((res) => {
-        setGenres(res.data.results);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false);
-      });
-
-    // clean up function
-    return () => controller.abort();
-  }, []);
-
-  return { genres, error, isLoading };
-};
+//takes in a typeparameter, sort of inheriting a class, passing an argument of /genres as it's endpoint in useData
+const useGenres = () => useData<Genre>("/genres");
 
 export default useGenres;
