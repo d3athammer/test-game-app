@@ -6,6 +6,7 @@ export interface Genre {
   // grab only what you need
   id: number;
   name: string;
+  image_background: string;
 }
 
 //takes in a typeparameter, sort of inheriting a class, passing an argument of /genres as it's endpoint in useData
