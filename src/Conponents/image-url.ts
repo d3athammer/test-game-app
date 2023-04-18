@@ -1,6 +1,7 @@
 import React from "react";
 
 const getCroppedImageURL = (url: string) => {
+  if (!url) return "";
   const target = "media/";
   //search for the index where media/ starts, and add its length to get the end index of media/
   const index = url.indexOf(target) + target.length;
