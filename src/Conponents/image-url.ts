@@ -1,7 +1,8 @@
 import React from "react";
+import noImage from "../assets/no-image-placeholder-6f3882e0.webp";
 
 const getCroppedImageURL = (url: string) => {
-  if (!url) return "";
+  if (!url) return noImage;
   const target = "media/";
   //search for the index where media/ starts, and add its length to get the end index of media/
   const index = url.indexOf(target) + target.length;
