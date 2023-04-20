@@ -34,6 +34,7 @@ const useData = <T>(
           ...requestConfig
         })
         .then((res) => {
+          console.log("Data fetched in useData:", res.data.results);
           setData(res.data.results);
           setLoading(false);
         })
