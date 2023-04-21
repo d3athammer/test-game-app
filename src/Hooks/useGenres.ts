@@ -1,5 +1,4 @@
-import useData from "./useData";
-
+import genres from "../data/Genre";
 // This hook is to access all genres from the API
 
 export interface Genre {
@@ -10,6 +9,9 @@ export interface Genre {
 }
 
 //takes in a typeparameter, sort of inheriting a class, passing an argument of /genres as it's endpoint in useData
-const useGenres = () => useData<Genre>("/genres");
+// const useGenres = () => useData<Genre>("/genres");
+
+// Shipping static data
+const useGenres = () => ({ data: genres, isLoading: false, error: null });
 
 export default useGenres;
