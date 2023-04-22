@@ -1,4 +1,5 @@
 import platforms from "../data/Platform";
+
 export interface Platform {
   // grab only what you need
   id: number;
